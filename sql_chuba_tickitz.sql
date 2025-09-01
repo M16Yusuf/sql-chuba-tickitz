@@ -122,3 +122,11 @@ create table order_seat(
 
 -- SQL untuk login,  
 select email, password, role,  from users where email="email";
+
+-- SQL For register 
+-- dapatkan semua email yang sudah terdaftar (untuk validasi)
+select email from users;
+-- insert user baru jika validasi terpenuhi 
+insert into users (email, password)
+  values('example@mail.com', 'test-hehe');
+
