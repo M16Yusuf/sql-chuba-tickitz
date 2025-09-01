@@ -5,7 +5,10 @@ create table genres (
 	id serial primary key,
 	name varchar(25) not null
 );
- 
+-- alter genres, add id manual not using serial
+alter table genres 
+alter column id type int;
+
 create table actors (
 	id serial primary key,
 	name varchar(50) not null
