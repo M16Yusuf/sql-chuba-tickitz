@@ -109,7 +109,11 @@ create table order_seat(
 );
 
 
+-- =====================================================================  
+-- ==================== {USED QUERY FOR PROJECT} =======================
+-- ===================================================================== 
 
-
+-- SQL untuk login,  
+select email, password, role,  from users where email="email";
 
 
