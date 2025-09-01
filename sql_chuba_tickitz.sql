@@ -132,7 +132,7 @@ create table order_seat(
 -- ======================= { ADD DUMMY DATA } ==========================
 -- =====================================================================
 insert into genres (id, name)
-value(28, 'Action'),
+values (28, 'Action'),
   (12, 'Adventure'),
   (16, 'Animation'),
   (35, 'Comedy'),
@@ -152,8 +152,19 @@ value(28, 'Action'),
   (10752, 'War'),
   (37, 'Western');
 
-insert into movies(poster_path, backdrop_path, title, overview, release_date, duration director_id)
-  value('/9FO1K6oKygac3j7LXLrIcG2Sz71.jpg', '/tiLGwBZ499pYvgYnJA5cI2ZAEbB.jpg', 'Mobile Suit Gundam GQuuuuuuX -Beginning-')
+insert into directors(name)
+values ('Kazuya Tsurumaki');
+
+insert into movies(poster_path, backdrop_path, title, overview, release_date, duration, director_id)
+  values ('/9FO1K6oKygac3j7LXLrIcG2Sz71.jpg', '/tiLGwBZ499pYvgYnJA5cI2ZAEbB.jpg', 'Mobile Suit Gundam GQuuuuuuX -Beginning-',
+  'High-school student Amate Yuzuriha lives peacefully in a space colony floating in outer space. But when she meets a war refugee named Nyaan, Amate is drawn into the illegal mobile suit dueling sport known as Clan Battle. Theatrical compilation of the first few episodes of Mobile Suit Gundam GQuuuuuuX.',
+  '2025-01-17', 80, 1);
+
+insert into genres_movies(genre_id, movie_id)
+  values (16, 1),
+  (28, 1),
+  (878, 1),
+  (18, 1);
 
 
 -- =====================================================================  
