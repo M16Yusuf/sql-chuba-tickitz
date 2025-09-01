@@ -221,4 +221,13 @@ SELECT m.id, m.poster_path, m.title, ARRAY_AGG(DISTINCT g.name) AS genres
   HAVING ARRAY_AGG(DISTINCT g.name)::text[] @> ARRAY['Action', 'Sci-Fi']::text[]
   LIMIT 20 OFFSET 0;
 
+-- SQL untuk get Schedule 
+-- asumsukan untuk tiap kota dan cinema memiliki schedule yang sama
+-- mendapatkan schedule untuk movie tertentu dengan id yang sudah diketahui
+SELECT m.id AS movie_id, m.title, s.id AS schedule_id, s.schedule
+  FROM movies m
+  JOIN schedules s ON m.id = s.movie_id
+  WHERE m.id = 1
+  ORDER BY s.schedule ASC;
+
 
