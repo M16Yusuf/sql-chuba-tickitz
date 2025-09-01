@@ -301,3 +301,12 @@ DELETE FROM transactions WHERE movies_id = 1;
 DELETE FROM movies WHERE id = 1;
 
 -- Edit Movie (Admin)
+UPDATE movies
+  SET title = 'The New Avengers',
+  overview = 'A reimagined story of Earth’s mightiest heroes.',
+  poster_path = '/images/new-avengers-poster.jpg',
+  backdrop_path = '/images/new-avengers-backdrop.jpg',
+  release_date = '2025-12-20 19:00:00',
+  duration = 145,
+  director_id = 3
+  WHERE id = 1;
