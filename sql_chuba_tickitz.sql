@@ -295,6 +295,9 @@ LIMIT 20 OFFSET 0;
 
 
 -- SQL Delete Movie (Admin)
-
+DELETE FROM genres_movies WHERE movie_id = 1;
+DELETE FROM schedules WHERE movie_id = 1;
+DELETE FROM transactions WHERE movies_id = 1;
+DELETE FROM movies WHERE id = 1;
 
 -- Edit Movie (Admin)
