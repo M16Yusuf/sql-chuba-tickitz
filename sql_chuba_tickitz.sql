@@ -199,3 +199,14 @@ SELECT m.id, m.poster_path, m.title, g.name AS genres, AVG(t.rating) AS avg_rati
   WHERE t.is_paid = true AND t.rating IS NOT NULL
   GROUP BY m.id, m.poster_path, m.title, g.name
   ORDER BY avg_rating DESC, rating_count DESC;
+
+-- SQL Movie dengan PAGENATION
+-- limit data dalam sekali query adalah 20
+-- dengan offset sebagai pagenation (page1=0,page2=20,page3=40)
+SELECT m.id, m.poster_path, m.title, ARRAY_AGG(g.name) AS genres
+  FROM movies m
+  JOIN genres_movies gm ON m.id = gm.movie_id
+  JOIN genres g ON gm.genre_id = g.id
+  GROUP BY m.id, m.poster_path, m.title
+  LIMIT 20 OFFSET 0;
+
