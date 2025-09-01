@@ -211,3 +211,14 @@ SELECT m.id, m.poster_path, m.title, ARRAY_AGG(g.name) AS genres
   GROUP BY m.id, m.poster_path, m.title
   LIMIT 20 OFFSET 0;
 
+-- SQL movie filter by title and genres with pagenation
+SELECT m.id, m.poster_path, m.title, ARRAY_AGG(DISTINCT g.name) AS genres
+  FROM movies m
+  JOIN genres_movies gm ON m.id = gm.movie_id
+  JOIN genres g ON gm.genre_id = g.id
+  WHERE m.title ILIKE '%avenger%'
+  GROUP BY m.id, m.poster_path, m.title
+  HAVING ARRAY_AGG(DISTINCT g.name)::text[] @> ARRAY['Action', 'Sci-Fi']::text[]
+  LIMIT 20 OFFSET 0;
+
+
