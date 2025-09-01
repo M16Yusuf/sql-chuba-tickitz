@@ -253,3 +253,23 @@ SELECT m.id, m.title, m.overview, m.poster_path, m.backdrop_path, m.release_date
   WHERE m.id = 1
   GROUP BY m.id, m.title, m.overview, m.poster_path, m.backdrop_path, m.release_date, m.duration, d.name;
 
+-- SQL Create order 
+
+
+-- SQL get profile
+SELECT first_name, last_name, avatar_path, email, phone_number, password, point, gender
+  FROM users WHERE email = 'email';
+
+-- SQL get History
+
+
+-- SQL Edit profile 
+
+
+-- SQL Get All movie (Admin)
+
+
+-- SQL Delete Movie (Admin)
+
+
+-- Edit Movie (Admin)
