@@ -230,4 +230,15 @@ SELECT m.id AS movie_id, m.title, s.id AS schedule_id, s.schedule
   WHERE m.id = 1
   ORDER BY s.schedule ASC;
 
+-- SQL untuk seats yang sudah terjual
+-- mendapatkan data seat yang sudah terjual dari satu schedule movies
+SELECT sch.id AS schedule_id, m.title AS movie_title, sch.schedule, s.code AS seat_code, t.id AS transaction_id, t.is_paid
+  FROM schedules sch
+  JOIN movies m ON sch.movie_id = m.id
+  JOIN transactions t ON sch.id = t.schedule_id
+  JOIN order_seat os ON t.id = os.transaction_id
+  JOIN seats s ON os.seat_id = s.id
+  WHERE sch.id = 1 AND t.is_paid = true
+  ORDER BY s.code ASC;
+
 
