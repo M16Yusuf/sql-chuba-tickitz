@@ -284,9 +284,14 @@ UPDATE users
   role = 'admin', password = '112233admin'
   WHERE id = 1;
 
-
-
 -- SQL Get All movie (Admin)
+SELECT m.id, m.title,  m.poster_path, m.release_date, m.duration, ARRAY_AGG(DISTINCT g.name) AS genres
+FROM movies m
+LEFT JOIN genres_movies gm ON m.id = gm.movie_id
+LEFT JOIN genres g ON gm.genre_id = g.id
+GROUP BY m.id, m.title, m.poster_path, m.release_date, m.duration
+ORDER BY m.release_date DESC
+LIMIT 20 OFFSET 0;
 
 
 -- SQL Delete Movie (Admin)
