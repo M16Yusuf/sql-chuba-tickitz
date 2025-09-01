@@ -261,7 +261,21 @@ SELECT first_name, last_name, avatar_path, email, phone_number, password, point,
   FROM users WHERE email = 'email';
 
 -- SQL get History
-
+SELECT
+  t.*, -- semua kolom dari tabel transactions
+  m.title AS movie_title, sch.schedule AS schedule_time, p.method AS payment_method,
+  c.name AS cinema_name, ci.name AS city_name, ARRAY_AGG(s.code) AS seat_codes
+  FROM transactions t
+  JOIN movies m ON t.movies_id = m.id
+  JOIN schedules sch ON t.schedule_id = sch.id
+  JOIN payments p ON t.payment_id = p.id
+  JOIN cinemas c ON t.cinema_id = c.id
+  JOIN cities ci ON t.city_id = ci.id
+  JOIN order_seat os ON t.id = os.transaction_id
+  JOIN seats s ON os.seat_id = s.id
+  WHERE t.user_id = 1
+  GROUP BY t.id, m.title, sch.schedule, p.method, c.name, ci.name
+  ORDER BY t.created_at DESC;
 
 -- SQL Edit profile 
 
