@@ -29,6 +29,9 @@ create table movies (
 	duration int,
 	director_id int references directors(id)
 );
+-- use real id movies from TMDB
+alter table movies
+alter column id type int;
 
 create table genres_movies(
 	genre_id int references genres(id),
