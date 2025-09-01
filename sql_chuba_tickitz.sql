@@ -181,3 +181,10 @@ select email from users;
 insert into users (email, password)
   values('example@mail.com', 'test-hehe');
 
+-- SQL untuk Upcoming movies 
+-- upcoming, movie yang release datenya masih dimasadepan
+SELECT m.id, m.poster_path, m.title, m.release_date, g.name AS genres
+  FROM movies m
+  JOIN genres_movies gm ON m.id = gm.movie_id
+  JOIN genres g ON gm.genre_id = g.id 
+  where m.release_date > current_date;
