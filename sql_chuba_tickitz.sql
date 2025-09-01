@@ -32,6 +32,10 @@ create table movies (
 -- use real id movies from TMDB
 alter table movies
 alter column id type int;
+-- undo, change with my own id 
+CREATE SEQUENCE movies_id_seq;
+alter table movies
+alter column id SET DEFAULT nextval('movies_id_seq');
 
 create table genres_movies(
 	genre_id int references genres(id),
@@ -145,6 +149,8 @@ value(28, 'Action'),
   (10752, 'War'),
   (37, 'Western');
 
+insert into movies(poster_path, backdrop_path, title, overview, release_date, duration director_id)
+  value('/9FO1K6oKygac3j7LXLrIcG2Sz71.jpg', '/tiLGwBZ499pYvgYnJA5cI2ZAEbB.jpg', 'Mobile Suit Gundam GQuuuuuuX -Beginning-')
 
 
 -- =====================================================================  
