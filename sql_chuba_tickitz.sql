@@ -183,11 +183,12 @@ insert into users (email, password)
 
 -- SQL untuk Upcoming movies 
 -- upcoming, movie yang release datenya masih dimasadepan
-SELECT m.id, m.poster_path, m.title, m.release_date, g.name AS genres
+SELECT m.id, m.poster_path, m.title, m.release_date, ARRAY_AGG(g.name) AS genres
   FROM movies m
   JOIN genres_movies gm ON m.id = gm.movie_id
-  JOIN genres g ON gm.genre_id = g.id 
-  where m.release_date > current_date;
+  JOIN genres g ON gm.genre_id = g.id
+  WHERE m.release_date > CURRENT_DATE
+  GROUP BY m.id, m.poster_path, m.title, m.release_date;
 
 -- SQL untuk popular Movie
 -- popular movie sort berdasarkan rating
