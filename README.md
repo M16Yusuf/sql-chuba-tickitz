@@ -4,4 +4,4 @@
 
 ## ERD Project Chuba-tickitz
 
-![erd](/erd_chuba_tickitz.png)
+![erd](/erd_chuba_tickitz_v1.2.png)
