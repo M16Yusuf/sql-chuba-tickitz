@@ -188,3 +188,14 @@ SELECT m.id, m.poster_path, m.title, m.release_date, g.name AS genres
   JOIN genres_movies gm ON m.id = gm.movie_id
   JOIN genres g ON gm.genre_id = g.id 
   where m.release_date > current_date;
+
+-- SQL untuk popular Movie
+-- popular movie sort berdasarkan rating
+SELECT m.id, m.poster_path, m.title, g.name AS genres, AVG(t.rating) AS avg_rating, COUNT(t.id) AS rating_count
+  FROM movies m
+  JOIN transactions t ON m.id = t.movies_id
+  JOIN genres_movies gm ON m.id = gm.movie_id
+  JOIN genres g ON gm.genre_id = g.id
+  WHERE t.is_paid = true AND t.rating IS NOT NULL
+  GROUP BY m.id, m.poster_path, m.title, g.name
+  ORDER BY avg_rating DESC, rating_count DESC;
