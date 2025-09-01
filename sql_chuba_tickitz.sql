@@ -60,6 +60,13 @@ create table users(
 	gender gender
 );
 
+-- alter table users, add some default value
+alter table users 
+alter column first_name set default 'user',
+alter column last_name set default 'user',
+alter column role  set default 'user',
+alter column point set default 0;
+
 create table city(
 	id serial primary key,
 	name varchar (50)
@@ -115,5 +122,3 @@ create table order_seat(
 
 -- SQL untuk login,  
 select email, password, role,  from users where email="email";
-
-
