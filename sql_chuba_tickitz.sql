@@ -278,6 +278,12 @@ SELECT
   ORDER BY t.created_at DESC;
 
 -- SQL Edit profile 
+UPDATE users
+  SET first_name = 'Muhammad', last_name = 'Yusuf', email = 'yusufsmd@example.com', gender = 'male',
+  phone_number = '+62-82240563847', avatar_path = '/images/ucup.jpg', point = 150,
+  role = 'admin', password = '112233admin'
+  WHERE id = 1;
+
 
 
 -- SQL Get All movie (Admin)
