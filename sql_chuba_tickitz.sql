@@ -241,4 +241,15 @@ SELECT sch.id AS schedule_id, m.title AS movie_title, sch.schedule, s.code AS se
   WHERE sch.id = 1 AND t.is_paid = true
   ORDER BY s.code ASC;
 
+-- SQL get movie detail
+-- detail dari sebuah movie dengan movie id yang sudah diketaui
+SELECT m.id, m.title, m.overview, m.poster_path, m.backdrop_path, m.release_date, m.duration, d.name AS director_name, ARRAY_AGG(DISTINCT g.name) AS genres, ARRAY_AGG(DISTINCT a.name) AS actors
+  FROM movies m
+  JOIN directors d ON m.director_id = d.id
+  LEFT JOIN genres_movies gm ON m.id = gm.movie_id
+  LEFT JOIN genres g ON gm.genre_id = g.id
+  LEFT JOIN actors_movies am ON m.id = am.movie_id
+  LEFT JOIN actors a ON am.actor_id = a.id
+  WHERE m.id = 1
+  GROUP BY m.id, m.title, m.overview, m.poster_path, m.backdrop_path, m.release_date, m.duration, d.name;
 
