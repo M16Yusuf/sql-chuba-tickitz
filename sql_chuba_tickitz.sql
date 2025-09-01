@@ -36,6 +36,9 @@ alter column id type int;
 CREATE SEQUENCE movies_id_seq;
 alter table movies
 alter column id SET DEFAULT nextval('movies_id_seq');
+-- change timestamp to date (column release_date)
+alter table movies
+alter column release_date type date;
 
 create table genres_movies(
 	genre_id int references genres(id),
